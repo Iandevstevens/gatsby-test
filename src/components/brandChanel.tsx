@@ -25,6 +25,7 @@ const BrandChanel = () => {
       path: "/channel/khwela",
     },
   ]
+
   const test = "../images/Absa_Shongololo_Game_Logo_Card_v1.png"
   return (
     <>

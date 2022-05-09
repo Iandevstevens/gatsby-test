@@ -1,50 +1,57 @@
 import React from "react"
-import AdBanner from "../components/adBanner"
-import Layout from "../components/layout"
-import AudioPlayer from "react-h5-audio-player"
 import "react-h5-audio-player/lib/styles.css"
+import AdBanner from "../components/adBanner"
+import AudioPlayerSlim from "../components/AudioPlayerSlim"
 import BrandChanel from "../components/brandChanel"
+import Carousel from "../components/carousel"
+import Layout from "../components/layout"
 
 const pageComponentsList = [
   { type: "bigAd" },
   { type: "musicPlayer" },
   { type: "h1", content: "Entertainment" },
-  { type: "brandChanel", content: "Entertainment" },
+  { type: "brandChanel" },
+  {
+    type: "carousel",
+    content: ["Shongololo", "Universal music", "Spin & win"],
+  },
+  { type: "h1", content: "Checkout our free content" },
+  { type: "p", content: "News, Gaming, Education, Resources and More" },
+  {
+    type: "smallAd",
+  },
+  {
+    type: "carousel",
+    content: ["Shongololo", "Universal music", "Spin & win"],
+    subheading: "News, Gaming, Education, Resources and More",
+  },
 ]
 
 const PageComponents = {
   bigAd: <AdBanner type={1} />,
-  musicPlayer: (
-    <AudioPlayer
-      autoPlay
-      src="http://example.com/audio.mp3"
-      onPlay={e => console.log("onPlay")}
-      // other props here
-    />
-  ),
+  musicPlayer: <AudioPlayerSlim />,
   h1: content => {
     return <h2 className="font-bold text-xl">{content}</h2>
   },
+  p: content => {
+    return <p className="text-gray-900 text-sm">{content}</p>
+  },
   brandChanel: <BrandChanel />,
+  carousel: content => <Carousel content={content} />,
+  smallAd: <AdBanner type={0} />,
 }
-
-const pageStructure = [
-  "bigAd",
-  "musicPlayer",
-  "brandChanel",
-  "entertainmentCarasol",
-  "smallAd",
-  "ResourceCarasol",
-  "covid",
-  "signOut",
-]
 
 const Home = () => {
   return (
     <Layout>
+      <div className="test-variable h-8 w-8"></div>
       {pageComponentsList.map(x => {
         switch (x.type) {
           case "h1":
+            return PageComponents[x.type](x.content)
+          case "p":
+            return PageComponents[x.type](x.content)
+          case "carousel":
             return PageComponents[x.type](x.content)
           default:
             return PageComponents[x.type]
