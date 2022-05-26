@@ -41,15 +41,14 @@ const Carousel = ({ content }: any) => {
   }, [embla, setScrollSnaps, onSelect])
 
   return (
-    <>
+    <div className="mb-4">
       <div id="carousel">
         {data.length > 0 && (
           <div className="embla" ref={viewportRef}>
             <div className="embla__container">
-              {data.map((slideData, i) => (
-                <div className="embla__slide">
+              {data.map(slideData => (
+                <div className="embla__slide" key={slideData.title}>
                   <Card
-                    key={i}
                     title={slideData.title}
                     image={slideData.src}
                     link={slideData.path}
@@ -69,7 +68,11 @@ const Carousel = ({ content }: any) => {
           </div>
         )}
       </div>
-    </>
+      <h2 className="font-bold text-xl">Entertainment</h2>
+      <p className="text-gray-900 text-sm">
+        News, Gaming, Education, Resources and More
+      </p>
+    </div>
   )
 }
 

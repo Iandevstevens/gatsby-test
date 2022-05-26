@@ -7,6 +7,7 @@ const Layout = ({ children }) => {
     <>
       <Header />
       {children}
+      <div className="mb-24"></div>
       <BottomNav />
     </>
   )

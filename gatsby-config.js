@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 module.exports = {
   pathPrefix: "/storage/yoursite",
   siteMetadata: {
@@ -20,6 +22,13 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `vungw1qe69i1`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

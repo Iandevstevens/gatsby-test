@@ -21,7 +21,7 @@ v75h75V150.1h37.5L150.3,37.5z"
       </Link>
       <div className="flex flex-col items-center">
         <Link to="/wifi-access">
-          <a
+          <div
             id="wifiNav"
             className="w-14 h-14 block flex items-center text-center rounded-full border-2 border-white -mt-6 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-300 border-solid"
           >
@@ -42,12 +42,12 @@ l37.5-37.5C167.2,191.9,133.6,191.9,112.8,212.6z M62.8,162.6l25,25c34.5-34.5,90.5
 C189.6,114.3,111.2,114.3,62.8,162.6z"
               />
             </svg>
-          </a>
+          </div>
         </Link>
         <p className="text-center w-16 pb-1">Free Wi-Fi</p>
       </div>
       <Link to="/earnsb">
-        <a
+        <div
           id="getsbNav"
           className=" block p-1 text-center text-white rounded-lg"
         >
@@ -144,7 +144,7 @@ c0.1-2.4,0.2-4.7,0.2-7.1c0-0.3,0-0.5,0-0.8c0-3.2,0-6.4-0.1-9.7C419.7,623.2,399.3
             />
           </svg>
           <label>Earn</label>
-        </a>
+        </div>
       </Link>
     </nav>
   )

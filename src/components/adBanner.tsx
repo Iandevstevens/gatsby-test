@@ -1,16 +1,23 @@
 import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const AdBanner = ({ type }: { type: number }) => {
-  //get Ad
+  const query = graphql`
+    query adQuery {
+      contentfulAd(adId: { eq: "khwelaBig" }) {
+        adImage {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
+    }
+  `
+  const { contentfulAd } = useStaticQuery(query)
 
   return (
     <>
-      <img
-        className="w-full mb-2"
-        alt="A random dog"
-        src="https://sebenza.s3.af-south-1.amazonaws.com/dev/images/ads/medium/Khwela_Medium_Banner_v1.png"
-      />
-      <div className="flex mb-4">
+      <GatsbyImage image={contentfulAd.adImage.gatsbyImageData} alt="test" />
+      <div className="flex mb-4 mt-2">
         <p className="font-bold mx-1 bg-primary w-8 text-center rounded">Ad</p>
         <p>test</p>
       </div>

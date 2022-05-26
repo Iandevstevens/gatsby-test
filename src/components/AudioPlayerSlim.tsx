@@ -348,7 +348,7 @@ const AudioPlayerSlim = (props: any) => {
   return (
     <>
       {playlist.length > 0 && (
-        <div className="flex flex-row items-center justify-center mb-1 text-black rounded-lg bg-black">
+        <div className="flex flex-row items-center justify-center mb-4 text-black rounded-lg bg-black">
           <div
             className="h-28 w-28 pl-2 pt-1"
             onClick={() => goTo(playlist[currentTrack].artistID)}
@@ -356,7 +356,7 @@ const AudioPlayerSlim = (props: any) => {
             <StaticImage
               alt="music"
               src={
-                "https://sebenza.s3.af-south-1.amazonaws.com/dev/images/ads/medium/Khwela_Medium_Banner_v1.png"
+                "https://sebenza.s3.af-south-1.amazonaws.com/dev/umg/artists/Nomfundo/Nomfundo_Moh_Amagama.png"
               }
               width={320}
               height={320}

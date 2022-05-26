@@ -1,44 +1,32 @@
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import React from "react"
 
 const BrandChanel = () => {
-  const data = [
-    {
-      key: 1,
-      src: "../images/Absa_Shongololo_Game_Logo_Card_v1.png",
-      path: "/game/shongololo?id=0",
-    },
-    {
-      key: 2,
-      src: "../images/Absa_Shongololo_Game_Logo_Card_v1.png",
-      path: "/channel/umg",
-    },
-    {
-      key: 3,
-      src: "../images/Absa_Shongololo_Game_Logo_Card_v1.png",
-      path: "/channel/pocketfin",
-    },
-    {
-      key: 4,
-      src: "../images/Absa_Shongololo_Game_Logo_Card_v1.png",
-      path: "/channel/khwela",
-    },
-  ]
-
-  const test = "../images/Absa_Shongololo_Game_Logo_Card_v1.png"
+  const query = graphql`
+    query brandQuery {
+      allContentfulBrandChanel {
+        nodes {
+          image {
+            gatsbyImageData(width: 125)
+          }
+          id
+        }
+      }
+    }
+  `
+  const { allContentfulBrandChanel } = useStaticQuery(query)
   return (
     <>
-      <div className="overflow-x-scroll">
+      <div className="overflow-x-scroll mb-2">
         <div className="flex w-max">
-          {data.map(item => (
-            <div key={item.key} className="pr-1">
+          {allContentfulBrandChanel.nodes.map(item => (
+            <div key={item.id} className="pr-1">
               <Link to="/home">
-                <StaticImage
+                <GatsbyImage
                   className="rounded-lg"
-                  src={test}
-                  alt="sebenza bucks"
-                  width={125}
+                  image={item.image.gatsbyImageData}
+                  alt="test"
                 />
               </Link>
             </div>
