@@ -1,18 +1,15 @@
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import SebenzaBucks from "./SebenzaBucks"
+import { graphql, useStaticQuery } from "gatsby"
 
-const Card = ({ title, sbAmount }: any) => {
+const Card = ({ title, sbAmount, image, link }: any) => {
+  const imageP = getImage(image)
   const onClick = () => {}
   return (
     <div className="relative" onClick={onClick}>
-      <StaticImage
-        className="rounded-lg"
-        src={
-          "https://sebenza.s3.af-south-1.amazonaws.com/dev/images/ads/medium/Khwela_Medium_Banner_v1.png"
-        }
-        alt="Surveys"
-      />
+      <GatsbyImage className="rounded-lg" image={imageP} alt="test" />
+      {/* <StaticImage className="rounded-lg" src={image} alt="Surveys" /> */}
       {title && (
         <p
           style={{ backgroundColor: "rgba(255,255,255,0.38)" }}
@@ -23,7 +20,7 @@ const Card = ({ title, sbAmount }: any) => {
       )}
       {sbAmount && (
         <div className="absolute right-3 top-3">
-          <SebenzaBucks sebenzaBucks={sbAmount} color="white" />
+          <SebenzaBucks amount={sbAmount} color="bg-white" />
         </div>
       )}
     </div>

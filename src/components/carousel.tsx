@@ -22,6 +22,7 @@ const data = [
 ]
 
 const Carousel = ({ content }: any) => {
+  console.log(content)
   const [viewportRef, embla] = useEmblaCarousel({ loop: true }, [Autoplay()])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<any[]>([])
@@ -39,18 +40,17 @@ const Carousel = ({ content }: any) => {
     setScrollSnaps(embla.scrollSnapList())
     embla.on("select", onSelect)
   }, [embla, setScrollSnaps, onSelect])
-
   return (
     <div className="mb-4">
       <div id="carousel">
-        {data.length > 0 && (
+        {content.length > 0 && (
           <div className="embla" ref={viewportRef}>
             <div className="embla__container">
-              {data.map(slideData => (
+              {content.map(slideData => (
                 <div className="embla__slide" key={slideData.title}>
                   <Card
                     title={slideData.title}
-                    image={slideData.src}
+                    image={slideData.image}
                     link={slideData.path}
                   />
                 </div>

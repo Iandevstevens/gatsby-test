@@ -1,6 +1,8 @@
+import { useMutation, useQuery } from "@apollo/client"
 import { StaticImage } from "gatsby-plugin-image"
 import React, { useEffect } from "react"
 import { useForm } from "react-hook-form"
+import { POST_USER } from "../graphql/user"
 import { __regexPhoneNumber__ } from "../util/regex"
 
 const CheckBox = ({ register, label }: any) => {
@@ -28,8 +30,18 @@ const LogIn = () => {
   }, [postedPhoneNumber])
 
   const onSubmit = data => {
-    console.log(data)
+    postUser({
+      variables: {
+        input: {
+          id: "0832368970",
+          isAbove18: true,
+          ssid: "test",
+          sessionID: "test",
+        },
+      },
+    })
   }
+  const [postUser, { data, loading, error }] = useMutation(POST_USER)
   return (
     <>
       <div className="h-72 bg-primary">

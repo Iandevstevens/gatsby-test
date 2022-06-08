@@ -5,3 +5,6 @@
  */
 
 // You can delete this file if you're not using it
+import "./src/css/index.scss"
+
+export { wrapRootElement } from "./src/components/Apollo"

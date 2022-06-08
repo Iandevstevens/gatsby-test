@@ -13,6 +13,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-postcss`,
+    "gatsby-plugin-use-query-params",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -1,3 +1,4 @@
+import { graphql } from "gatsby"
 import React from "react"
 import "react-h5-audio-player/lib/styles.css"
 import AdBanner from "../components/adBanner"
@@ -5,23 +6,36 @@ import AudioPlayerSlim from "../components/AudioPlayerSlim"
 import BrandChanel from "../components/brandChanel"
 import Carousel from "../components/carousel"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
 import SmallBanner from "./../components/SmallBanner"
 
-const PageComponents = {
-  musicPlayer: () => <AudioPlayerSlim />,
-  h1: content => <h2 className="font-bold text-xl mx-2">{content}</h2>,
-  p: content => <p className="text-gray-900 text-sm">{content}</p>,
-  brandChanel: () => <BrandChanel />,
-  carousel: content => <Carousel content={content} />,
-  smallAd: () => <SmallBanner />,
-}
+const firstCarousel = [
+  {
+    title: "Universal Music",
+    path: "/channel/umg",
+  },
+  {
+    title: "Shongololo",
+    path: "/channel/umg",
+  },
+  {
+    title: "Spin & Win",
+    path: "/channel/umg",
+  },
+]
 
-const Home = ({ data }: any) => {
-  const pageComponentsList = data.contentfulPage.content.map(content => {
-    const { id, internal } = content
-    return { id, ...JSON.parse(internal.content) }
-  })
+const secondCarousel = [
+  {
+    title: "Khwela",
+    path: "/channel/umg",
+  },
+  {
+    title: "PocketFin",
+    path: "/channel/umg",
+  },
+]
+
+const Home = ({ data }) => {
+  console.log(data.allFile.nodes)
   return (
     <Layout>
       <AdBanner type={1} />
@@ -29,12 +43,22 @@ const Home = ({ data }: any) => {
         <AudioPlayerSlim />
         <h2 className="font-bold text-xl">Entertainment</h2>
         <BrandChanel />
-        <Carousel content />
+        <Carousel
+          content={firstCarousel.map(y => ({
+            image: data.allFile.nodes.find(x => x.name === y.title),
+            ...y,
+          }))}
+        />
       </div>
       <SmallBanner />
       <div className="mx-2">
         <h2 className="font-bold text-xl">Resources</h2>
-        <Carousel content />
+        <Carousel
+          content={secondCarousel.map(y => ({
+            image: data.allFile.nodes.find(x => x.name === y.title),
+            ...y,
+          }))}
+        />
       </div>
       <p className="text-center font-semibold">Sign Out</p>
     </Layout>
@@ -42,13 +66,13 @@ const Home = ({ data }: any) => {
 }
 
 export const query = graphql`
-  query PageQuery {
-    contentfulPage(pageName: { eq: "Home" }) {
-      content {
-        internal {
-          content
+  query MyQuery {
+    allFile(filter: { relativeDirectory: { eq: "home" } }) {
+      nodes {
+        name
+        childImageSharp {
+          gatsbyImageData
         }
-        id
       }
     }
   }

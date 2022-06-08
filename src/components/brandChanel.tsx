@@ -18,8 +18,8 @@ const BrandChanel = () => {
   const { allContentfulBrandChanel } = useStaticQuery(query)
   return (
     <>
-      <div className="overflow-x-scroll mb-2">
-        <div className="flex w-max">
+      <div className="overflow-x-scroll mb-1">
+        <div className="flex w-max my-1">
           {allContentfulBrandChanel.nodes.map(item => (
             <div key={item.id} className="pr-1">
               <Link to="/home">
