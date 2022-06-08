@@ -35,7 +35,6 @@ const secondCarousel = [
 ]
 
 const Home = ({ data }) => {
-  console.log(data.allFile.nodes)
   return (
     <Layout>
       <AdBanner type={1} />
