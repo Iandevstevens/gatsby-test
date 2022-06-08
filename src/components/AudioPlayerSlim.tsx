@@ -365,6 +365,7 @@ const AudioPlayerSlim = (props: any) => {
           </div>
           <div className="w-64">
             <LivePlayer
+              preload="none"
               loop
               showSkipControls
               autoPlayAfterSrcChange
