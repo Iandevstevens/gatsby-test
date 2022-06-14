@@ -1,80 +1,51 @@
-import { graphql } from "gatsby"
 import React from "react"
-import "react-h5-audio-player/lib/styles.css"
 import AdBanner from "../components/adBanner"
 import AudioPlayerSlim from "../components/AudioPlayerSlim"
 import BrandChanel from "../components/brandChanel"
-import Carousel from "../components/carousel"
+import Carousel1 from "../components/carousel1"
+import Carousel2 from "../components/carousel2"
 import Layout from "../components/layout"
-import SmallBanner from "./../components/SmallBanner"
 
-const firstCarousel = [
-  {
-    title: "Universal Music",
-    path: "/channel/umg",
-  },
-  {
-    title: "Shongololo",
-    path: "/channel/umg",
-  },
-  {
-    title: "Spin & Win",
-    path: "/channel/umg",
-  },
-]
-
-const secondCarousel = [
-  {
-    title: "Khwela",
-    path: "/channel/umg",
-  },
-  {
-    title: "PocketFin",
-    path: "/channel/umg",
-  },
-]
-
-const Home = ({ data }) => {
+const Home = () => {
   return (
     <Layout>
-      <AdBanner type={1} />
+      <AdBanner name="Cadbury" />
       <div className="mx-2">
         <AudioPlayerSlim />
         <h2 className="font-bold text-xl">Entertainment</h2>
         <BrandChanel />
-        <Carousel
-          content={firstCarousel.map(y => ({
-            image: data.allFile.nodes.find(x => x.name === y.title),
-            ...y,
-          }))}
-        />
+        <Carousel1 />
       </div>
-      <SmallBanner />
+      <AdBanner />
       <div className="mx-2">
         <h2 className="font-bold text-xl">Resources</h2>
-        <Carousel
-          content={secondCarousel.map(y => ({
-            image: data.allFile.nodes.find(x => x.name === y.title),
-            ...y,
-          }))}
-        />
+        <Carousel2 />
       </div>
       <p className="text-center font-semibold">Sign Out</p>
     </Layout>
   )
 }
 
-export const query = graphql`
-  query MyQuery {
-    allFile(filter: { relativeDirectory: { eq: "home" } }) {
-      nodes {
-        name
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-  }
-`
-
 export default Home
+
+// export async function getServerData() {
+//   try {
+//     const res = await fetch(`https://dog.ceo/api/breed/shiba/images/random`)
+//     if (!res.ok) {
+//       throw new Error(`Response failed`)
+//     }
+//     return {
+//       props: {
+//         big: "https://sebenza.s3.af-south-1.amazonaws.com/dev/images/ads/medium/Cadbury_Medium_Banner.gif",
+//         small:
+//           "https://sebenza.s3.af-south-1.amazonaws.com/dev/images/ads/small/McD_Small_Banner_R39.jpg",
+//       },
+//     }
+//   } catch (error) {
+//     return {
+//       status: 500,
+//       headers: {},
+//       props: {},
+//     }
+//   }
+// }

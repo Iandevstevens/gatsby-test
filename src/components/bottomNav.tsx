@@ -46,7 +46,7 @@ C189.6,114.3,111.2,114.3,62.8,162.6z"
         </Link>
         <p className="text-center w-16 pb-1">Free Wi-Fi</p>
       </div>
-      <Link to="/earnsb">
+      <Link to="/earn">
         <div
           id="getsbNav"
           className=" block p-1 text-center text-white rounded-lg"

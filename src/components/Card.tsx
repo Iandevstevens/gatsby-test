@@ -1,7 +1,6 @@
-import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import React from "react"
 import SebenzaBucks from "./SebenzaBucks"
-import { graphql, useStaticQuery } from "gatsby"
 
 const Card = ({ title, sbAmount, image, link }: any) => {
   const imageP = getImage(image)
@@ -9,7 +8,6 @@ const Card = ({ title, sbAmount, image, link }: any) => {
   return (
     <div className="relative" onClick={onClick}>
       <GatsbyImage className="rounded-lg" image={imageP} alt="test" />
-      {/* <StaticImage className="rounded-lg" src={image} alt="Surveys" /> */}
       {title && (
         <p
           style={{ backgroundColor: "rgba(255,255,255,0.38)" }}

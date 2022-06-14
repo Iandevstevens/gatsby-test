@@ -22,7 +22,6 @@ const data = [
 ]
 
 const Carousel = ({ content }: any) => {
-  console.log(content)
   const [viewportRef, embla] = useEmblaCarousel({ loop: true }, [Autoplay()])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [scrollSnaps, setScrollSnaps] = useState<any[]>([])
@@ -47,9 +46,9 @@ const Carousel = ({ content }: any) => {
           <div className="embla" ref={viewportRef}>
             <div className="embla__container">
               {content.map(slideData => (
-                <div className="embla__slide" key={slideData.title}>
+                <div className="embla__slide" key={slideData.id}>
                   <Card
-                    title={slideData.title}
+                    title={slideData.heading}
                     image={slideData.image}
                     link={slideData.path}
                   />
