@@ -1,9 +1,11 @@
+const { API_URL } = process.env
+
 export const recordPage = (
   pageViewed: string,
   pageFrom: string,
   search: string
 ) => {
-  fetch("http://localhost:4000/pageLog", {
+  fetch(`${API_URL}/pageLog`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     credentials: "include",

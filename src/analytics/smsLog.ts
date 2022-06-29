@@ -1,5 +1,7 @@
+const { API_URL } = process.env
+
 export const recordSms = (status: string) => {
-  fetch("http://localhost:4000/smsLog", {
+  fetch(`${API_URL}/smsLog`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     credentials: "include",

@@ -1,6 +1,8 @@
+const { API_URL } = process.env
+
 export const recordAdWatched = (adID: string) => {
   const pageViewed = window.location.pathname
-  fetch("http://localhost:4000/adWatchedLog", {
+  fetch(`${API_URL}/adWatchedLog`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     credentials: "include",

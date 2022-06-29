@@ -1,5 +1,7 @@
+const { API_URL } = process.env
+
 export const recordSurvey = (questionID: string, answer: string) => {
-  fetch("http://localhost:4000/surveysLog", {
+  fetch(`${API_URL}/surveysLog`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     credentials: "include",
