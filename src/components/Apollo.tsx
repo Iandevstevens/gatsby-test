@@ -1,10 +1,10 @@
 import React, { createContext, useMemo, useState } from "react"
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client"
 
-const { API_URL } = process.env
+const { GATSBY_API_URL } = process.env
 
 const client = new ApolloClient({
-  uri: `${process.env.API_URL}/graphql`,
+  uri: `${process.env.GATSBY_API_URL}/graphql`,
   cache: new InMemoryCache(),
   credentials: "include",
 })

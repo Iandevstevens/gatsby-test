@@ -1,8 +1,8 @@
-const { API_URL } = process.env
+const { GATSBY_API_URL } = process.env
 
 export const recordAdWatched = (adID: string) => {
   const pageViewed = window.location.pathname
-  fetch(`${API_URL}/adWatchedLog`, {
+  fetch(`${GATSBY_API_URL}/adWatchedLog`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     credentials: "include",

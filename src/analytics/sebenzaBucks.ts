@@ -1,7 +1,7 @@
-const { API_URL } = process.env
+const { GATSBY_API_URL } = process.env
 
 export const recordSebenzaBucks = (reason: string, amount: number) => {
-  fetch(`${API_URL}/sebenzaBucksLog`, {
+  fetch(`${GATSBY_API_URL}/sebenzaBucksLog`, {
     method: "POST",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     credentials: "include",
