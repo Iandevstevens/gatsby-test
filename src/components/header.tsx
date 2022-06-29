@@ -1,27 +1,27 @@
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import React from "react"
-import { UserStateContext } from "./layout"
+import React, { useEffect } from "react"
 import SebenzaBucks from "./SebenzaBucks"
+import useAutoLogin from "./../hooks/autoLogin"
 
 const Header = () => {
+  const { error, userSb } = useAutoLogin()
+
+  useEffect(() => {
+    if (error) {
+      // navigate("/")
+    }
+  }, [error])
+
   return (
-    <UserStateContext.Consumer>
-      {user => (
-        <div className="p-3 flex flex-row items-center justify-between">
-          <Link to="/home">
-            <StaticImage
-              src="../images/SebenzaLog.svg"
-              alt="logo"
-              height={24}
-            />
-          </Link>
-          <Link to="/earnsb">
-            <SebenzaBucks amount={user.sb} color="bg-primary" />
-          </Link>
-        </div>
-      )}
-    </UserStateContext.Consumer>
+    <div className="p-3 flex flex-row items-center justify-between">
+      <Link to="/home">
+        <StaticImage src="../images/SebenzaLog.svg" alt="logo" height={24} />
+      </Link>
+      <Link to="/earn">
+        <SebenzaBucks amount={userSb || 0} color="bg-primary" />
+      </Link>
+    </div>
   )
 }
 

@@ -10,7 +10,7 @@ const SebenzaBucks = ({ amount, color }: any) => {
           <StaticImage
             src="../images/Sebenza_Bucks_Coin.png"
             alt="sebenza bucks"
-            height={32}
+            height={30}
           />
         </div>
       </div>

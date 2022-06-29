@@ -1,0 +1,1 @@
+export { recordPage } from "./pageLog"

@@ -1,17 +1,24 @@
+import { useQuery } from "@apollo/client"
 import React, { useEffect, useState } from "react"
+import { recordAdWatched } from "../analytics/adWatchedLog"
+import { GET_BANNER_AD } from "../graphql/ad"
 
-const AdBanner = ({ name }: { name?: string }) => {
-  const [imgURL, setImgURL] = useState("")
+const AdBanner = ({ type }: { type: number }) => {
+  const { data, loading, error } = useQuery(GET_BANNER_AD, {
+    fetchPolicy: "network-only",
+    variables: {
+      type: type,
+    },
+  })
+
   useEffect(() => {
-    const test = async () => {
-      const res = await fetch(`https://dog.ceo/api/breed/shiba/images/random`)
-      setImgURL((await res.json()).message)
+    if (data?.getBannerAd?.adID) {
+      recordAdWatched(data?.getBannerAd?.adID)
     }
-    test()
-  }, [])
+  }, [data])
   return (
     <>
-      {imgURL !== "" && (
+      {data?.getBannerAd?.imageURL && (
         <img
           style={{
             width: "100%",
@@ -19,17 +26,17 @@ const AdBanner = ({ name }: { name?: string }) => {
             marginBottom: "14px",
           }}
           alt="A random dog"
-          src={imgURL}
+          src={data?.getBannerAd?.imageURL}
         />
       )}
-      {!!name && (
+      {/* {!!name && (
         <div className="flex mb-4 mt-2">
           <p className="font-bold mx-1 bg-primary w-8 text-center rounded">
             Ad
           </p>
           <p>test</p>
         </div>
-      )}
+      )} */}
     </>
   )
 }

@@ -11,6 +11,7 @@ const BrandChanel = () => {
             gatsbyImageData(width: 125)
           }
           id
+          path
         }
       }
     }
@@ -22,7 +23,7 @@ const BrandChanel = () => {
         <div className="flex w-max my-1">
           {allContentfulBrandChanel.nodes.map(item => (
             <div key={item.id} className="pr-1">
-              <Link to="/home">
+              <Link to={item.path}>
                 <GatsbyImage
                   className="rounded-lg"
                   image={item.image.gatsbyImageData}

@@ -1,22 +1,38 @@
 exports.createPages = async function ({ actions, graphql }) {
   const { data } = await graphql(`
     query {
-      allContentfulAd {
+      allContentfulAd(filter: { type: { eq: 2 } }) {
         nodes {
-          id
-          adImage {
+          adId
+          image {
             gatsbyImageData
           }
+        }
+      }
+      allContentfulSurvey {
+        nodes {
+          questionText
+          questionType
+          possibleAnswers
+          surveyId
         }
       }
     }
   `)
   data.allContentfulAd.nodes.forEach(node => {
-    const slug = node.id
+    const slug = node.adId
     actions.createPage({
       path: `/earn/ad/${slug}`,
       component: require.resolve(`./src/templates/ad.tsx`),
       context: { ad: node },
+    })
+  })
+  data.allContentfulSurvey.nodes.forEach(node => {
+    const slug = node.surveyId
+    actions.createPage({
+      path: `/earn/survey/${slug}`,
+      component: require.resolve(`./src/templates/survey.tsx`),
+      context: { survey: node },
     })
   })
 }

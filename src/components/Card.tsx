@@ -1,12 +1,12 @@
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import SebenzaBucks from "./SebenzaBucks"
+import { Link } from "gatsby"
 
-const Card = ({ title, sbAmount, image, link }: any) => {
+const Card = ({ title, sbAmount, image, path }: any) => {
   const imageP = getImage(image)
-  const onClick = () => {}
   return (
-    <div className="relative" onClick={onClick}>
+    <Link to={path} className="relative">
       <GatsbyImage className="rounded-lg" image={imageP} alt="test" />
       {title && (
         <p
@@ -21,7 +21,7 @@ const Card = ({ title, sbAmount, image, link }: any) => {
           <SebenzaBucks amount={sbAmount} color="bg-white" />
         </div>
       )}
-    </div>
+    </Link>
   )
 }
 

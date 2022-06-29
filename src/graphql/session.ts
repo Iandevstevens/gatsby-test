@@ -5,3 +5,9 @@ export const GET_SESSION = gql`
     getSession(id: $id)
   }
 `
+
+export const CREATE_SESSION = gql`
+  mutation Mutation {
+    createSession
+  }
+`

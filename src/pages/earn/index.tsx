@@ -14,7 +14,12 @@ const Earn = ({ data }) => {
       <div className="mx-2">
         {data.contentfulCardList.cardList.map(x => (
           <div key={x.id} className="mb-2">
-            <Card title={x.heading} sbAmount={x.sebenzaBucks} image={x.image} />
+            <Card
+              title={x.heading}
+              sbAmount={x.sebenzaBucks}
+              image={x.image}
+              path={x.path}
+            />
           </div>
         ))}
       </div>
